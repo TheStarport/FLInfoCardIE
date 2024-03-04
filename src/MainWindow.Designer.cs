@@ -52,7 +52,6 @@
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.infocardsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.infocards1 = new FLInfocardIE.Infocards();
-            this.buttonAbout = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -79,7 +78,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.buttonAbout);
             this.tabPage1.Controls.Add(this.richTextBox1);
             this.tabPage1.Controls.Add(this.buttonExportInfocards);
             this.tabPage1.Controls.Add(this.buttonSaveChanges);
@@ -316,15 +314,6 @@
             this.infocards1.DataSetName = "Infocards";
             this.infocards1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // buttonAbout
-            // 
-            this.buttonAbout.Location = new System.Drawing.Point(362, 54);
-            this.buttonAbout.Name = "buttonAbout";
-            this.buttonAbout.Size = new System.Drawing.Size(75, 23);
-            this.buttonAbout.TabIndex = 17;
-            this.buttonAbout.Text = "Help";
-            this.buttonAbout.UseVisualStyleBackColor = true;
-            this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
             // 
             // MainWindow
             // 
@@ -377,7 +366,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn textDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button buttonAbout;
 
     }
 }

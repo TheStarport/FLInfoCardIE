@@ -29,7 +29,7 @@ namespace FLInfocardIE
         private void buttonScan_Click(object sender, EventArgs e)
         {
             if (bgWkr == null)
-            {                
+            {
                 bgWkr = new BackgroundWorker();
                 richTextBox1.Clear();
                 bgWkr.DoWork += new DoWorkEventHandler(ScanIt);
@@ -86,7 +86,7 @@ namespace FLInfocardIE
         static extern int SizeofResource(IntPtr hModule, IntPtr hResInfo);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern IntPtr BeginUpdateResource(string pFileName, [MarshalAs(UnmanagedType.Bool)]bool bDeleteExistingResources);
+        static extern IntPtr BeginUpdateResource(string pFileName, [MarshalAs(UnmanagedType.Bool)] bool bDeleteExistingResources);
 
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern int EndUpdateResource(IntPtr hUpdate, bool fDiscard);
@@ -187,7 +187,7 @@ namespace FLInfocardIE
 
                             int start = 0;
                             int end = size - 1;
-                            
+
                             // Strip the unicode 16 little endian bom from the start
                             // and the \n\n and null at the end of the string. We will
                             // re-add these if we save changes.
@@ -244,7 +244,7 @@ namespace FLInfocardIE
                                     end = end_before_fix_attempt;
                                 }
                             }
-                            
+
                             int count = end - start + 1;
                             string text = System.Text.Encoding.Unicode.GetString(bufInfo, start, count);
 
@@ -357,7 +357,7 @@ namespace FLInfocardIE
         {
             OpenFileDialog dialog = new OpenFileDialog();
             if (dialog.ShowDialog(this) == DialogResult.OK)
-            {                
+            {
                 BackgroundWorker bg = new BackgroundWorker();
                 bg.DoWork += new DoWorkEventHandler(bg_ImportWork);
                 bg.RunWorkerAsync(dialog.FileName);
@@ -570,7 +570,7 @@ namespace FLInfocardIE
                 sr.Close();
             }
 
-            
+
         }
 
         /// <summary>
@@ -609,7 +609,7 @@ namespace FLInfocardIE
                         // If we have an infocard xml resource then write it out.
                         if (infocards.ContainsKey(iIDS)
                             && !infocards[iIDS].is_string_name)
-                            //&& !infocards[iIDS].has_error)
+                        //&& !infocards[iIDS].has_error)
                         {
                             UnicodeEncoding encoding = new System.Text.UnicodeEncoding();
                             byte[] textbuf = encoding.GetBytes(infocards[iIDS].text);
@@ -641,7 +641,7 @@ namespace FLInfocardIE
                             {
                                 if (infocards.ContainsKey(iIDS + subId)
                                     && infocards[iIDS + subId].is_string_name)
-                                    //&& !infocards[iIDS + subId].has_error)
+                                //&& !infocards[iIDS + subId].has_error)
                                 {
                                     UnicodeEncoding encoding = new System.Text.UnicodeEncoding(false, false, true);
                                     string text = infocards[iIDS + subId].text;
@@ -658,7 +658,7 @@ namespace FLInfocardIE
                                     buf[pos++] = 0x00;
                                 }
                             }
-                            
+
                             if (pos > 32) // non empty resource
                             {
                                 IntPtr ptr = Marshal.AllocHGlobal(pos);
@@ -698,7 +698,7 @@ namespace FLInfocardIE
                 bg.RunWorkerAsync(dialog.FileName);
             }
         }
-        
+
         void bg_ExportWork(object sender, DoWorkEventArgs e)
         {
             using (StreamWriter fs = File.CreateText((string)e.Argument))
@@ -787,7 +787,7 @@ namespace FLInfocardIE
                 richTextBoxRawCard.Text = row.Cells[1].Value.ToString();
 
                 richTextBoxFormattedCard.Clear();
-                richTextBoxFormattedCard.AppendText("@@@INSERTED_RTF_CODE_HACK@@@");                
+                richTextBoxFormattedCard.AppendText("@@@INSERTED_RTF_CODE_HACK@@@");
                 string rtf = FLUtility.FLXmlToRtf(row.Cells[1].Value.ToString());
                 richTextBoxFormattedCard.Rtf = richTextBoxFormattedCard.Rtf.Replace("@@@INSERTED_RTF_CODE_HACK@@@", rtf);
             }
@@ -797,11 +797,6 @@ namespace FLInfocardIE
                 richTextBoxRawCard.Clear();
                 richTextBoxFormattedCard.Clear();
             }
-        }
-
-        private void buttonAbout_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Text = Properties.Resources.Readme;
         }
     }
 }
